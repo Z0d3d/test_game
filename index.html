@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#171f1c" />
+    <title>Flat Out</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0d9a8'/%3E%3Cpath d='M9 5h14v9H9z' fill='%23e8642a'/%3E%3Cpath d='M5 18h22v9H5z' fill='%2363b7ad'/%3E%3C/svg%3E"
+    />
+    <script type="module" crossorigin src="./assets/index-CjolUY_O.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-4lW8-Hnq.css">
+  </head>
+  <body>
+    <main id="stage" aria-label="Flat Out game" data-i18n-aria="aria.game"></main>
+
+    <section id="hud" class="hud" hidden aria-live="off">
+      <div class="job">
+        <p class="job-eyebrow" id="map-name">SITE 01 · SOUTH SPIT</p>
+        <p class="job-title">FLAT OUT</p>
+        <div class="blocks-left">
+          <svg class="cube-stack" viewBox="0 0 34 30" aria-hidden="true">
+            <g class="cube"><polygon class="cube-top" points="9,8 17,4 25,8 17,12"/><polygon class="cube-l" points="9,8 17,12 17,21 9,17"/><polygon class="cube-r" points="25,8 17,12 17,21 25,17"/></g>
+            <g class="cube c2"><polygon class="cube-top" points="1,18 9,14 17,18 9,22"/><polygon class="cube-l" points="1,18 9,22 9,30 1,26"/><polygon class="cube-r" points="17,18 9,22 9,30 17,26"/></g>
+            <g class="cube c3"><polygon class="cube-top" points="17,18 25,14 33,18 25,22"/><polygon class="cube-l" points="17,18 25,22 25,30 17,26"/><polygon class="cube-r" points="33,18 25,22 25,30 33,26"/></g>
+          </svg>
+          <span id="blocks-left-value">0</span>
+          <span class="blocks-left-label" data-i18n="hud.blocksLeft">BLOCKS LEFT</span>
+        </div>
+        <div class="meter grade-meter" role="progressbar" aria-label="Flat out progress" data-i18n-aria="hud.gradeAria" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="grade-meter">
+          <span id="grade-bar"></span>
+        </div>
+        <div class="job-read">
+          <span id="grade-pct">0.0%</span>
+          <span id="score-value">0 pts</span>
+        </div>
+        <p class="rare-read">
+          <span class="rare-read-label" data-i18n="hud.rare">RARE CORES</span>
+          <span id="rare-cleared">0 / 35</span>
+        </p>
+      </div>
+
+      <div id="bonus" class="bonus" hidden>
+        <div class="combo-count"><span id="bonus-chain">1</span><span class="combo-unit" data-i18n="combo.unit">BLOCKS</span></div>
+        <p id="bonus-value">+1</p>
+        <div class="combo-drain" aria-hidden="true"><span></span></div>
+        <div class="bonus-progress" aria-hidden="true"><span id="bonus-progress-fill"></span></div>
+        <p id="bonus-next">next · copper</p>
+      </div>
+
+      <div class="truck-card">
+        <div class="card-head">
+          <p class="truck-eyebrow" data-i18n="hud.truck">TRUCK</p>
+          <p class="truck-state plate" id="truck-state">PARKED</p>
+        </div>
+        <p class="truck-tier" id="truck-tier">TIER 1 · SITE TRUCK</p>
+        <svg class="truck-art" viewBox="0 0 132 62" aria-hidden="true">
+          <defs><clipPath id="truck-bed-clip"><polygon points="10,14 78,12 78,36 10,36"/></clipPath></defs>
+          <g class="t-rockets"><polygon points="14,10 40,10 44,6 40,2 14,2"/><polygon points="46,10 70,10 74,6 70,2 46,2"/></g>
+          <rect class="t-pipe" x="84" y="2" width="3" height="18"/>
+          <rect class="t-pipe t-pipe2" x="89" y="6" width="3" height="14"/>
+          <polygon class="t-body" points="4,12 84,8 84,42 4,42"/>
+          <polygon class="t-inner" points="10,14 78,12 78,36 10,36"/>
+          <g clip-path="url(#truck-bed-clip)"><rect class="t-sand" x="10" y="12" width="68" height="24"/></g>
+          <polygon class="t-mound" points="10,14 22,7 42,3 62,4 78,12"/>
+          <rect class="t-rack" x="4" y="9" width="80" height="2"/>
+          <polygon class="t-accent" points="4,36 84,36 84,42 4,42"/>
+          <polygon class="t-body t-cab" points="88,18 106,18 118,32 124,33 124,46 88,46"/>
+          <polygon class="t-window" points="94,22 105,22 112,31 94,31"/>
+          <rect class="t-light" x="94" y="14" width="12" height="4"/>
+          <rect class="t-chassis" x="2" y="42" width="124" height="6"/>
+          <g class="t-wheel"><circle cx="24" cy="50" r="9"/><circle cx="62" cy="50" r="9"/><circle cx="104" cy="50" r="9"/></g>
+          <g class="t-hub"><circle cx="24" cy="50" r="3.5"/><circle cx="62" cy="50" r="3.5"/><circle cx="104" cy="50" r="3.5"/></g>
+        </svg>
+        <div class="meter truck-meter" role="progressbar" aria-label="Truck payload" data-i18n-aria="hud.truckAria" aria-valuemin="0" aria-valuemax="120" aria-valuenow="0" id="truck-meter">
+          <span id="truck-bar"></span>
+        </div>
+        <p class="truck-read"><span id="truck-payload">0 / 120</span><span id="truck-fill">120 to fill</span></p>
+        <button id="bay-chip" class="bay-chip" type="button" hidden>
+          <span class="bay-key">E</span>
+          <span id="bay-label">TRUCK BAY</span>
+        </button>
+      </div>
+
+      <div class="barrow">
+        <svg class="barrow-art" viewBox="0 0 76 50" aria-hidden="true">
+          <defs><clipPath id="barrow-clip"><polygon points="12,12 54,12 46,29 20,29"/></clipPath></defs>
+          <line class="b-handle" x1="12" y1="12" x2="2" y2="30"/>
+          <line class="b-leg" x1="22" y1="29" x2="20" y2="44"/>
+          <line class="b-leg" x1="34" y1="29" x2="36" y2="44"/>
+          <polygon class="b-tray" points="10,10 56,10 47,31 19,31"/>
+          <polygon class="b-inner" points="12,12 54,12 46,29 20,29"/>
+          <g clip-path="url(#barrow-clip)"><rect class="b-sand" x="12" y="12" width="42" height="17"/></g>
+          <polygon class="b-mound" points="12,12 24,5 42,3 54,12"/>
+          <line class="b-leg" x1="50" y1="30" x2="62" y2="38"/>
+          <g class="b-wheel"><circle cx="62" cy="38" r="9"/><circle class="b-hub" cx="62" cy="38" r="3"/></g>
+        </svg>
+        <div class="barrow-main">
+          <div class="barrow-head">
+            <p class="barrow-eyebrow" data-i18n="hud.barrow">BARROW</p>
+            <span id="barrow-full" class="barrow-full" hidden data-i18n="hud.barrowFull">FULL</span>
+          </div>
+          <p class="barrow-read"><span id="dirt-value">0</span><span class="muted"> / <span id="dirt-capacity">24</span> <span data-i18n="hud.blocksWord">blocks</span></span></p>
+        </div>
+        <div class="meter barrow-meter" role="progressbar" aria-label="Barrow load" data-i18n-aria="hud.barrowAria" aria-valuemin="0" aria-valuemax="24" aria-valuenow="0" id="dirt-meter">
+          <span id="dirt-bar"></span>
+        </div>
+        <p class="barrow-total"><span id="shoveled-value">0</span> <span data-i18n="hud.shoveledLifetime">shoveled lifetime</span></p>
+        <div id="recall-chip" class="recall-chip" hidden>
+          <span class="recall-key">R</span>
+          <span id="recall-label">RECALL</span>
+          <span id="recall-charges" class="recall-charges"></span>
+        </div>
+      </div>
+
+      <div id="crosshair" aria-hidden="true"><span></span></div>
+      <div id="combo-ring" aria-hidden="true"></div>
+      <p id="combo-burst" class="combo-burst" hidden></p>
+      <p id="hit-readout" class="hit-readout" hidden></p>
+      <div id="return-callout" class="callout return-callout" hidden>
+        <span class="callout-arrow" id="return-arrow" aria-hidden="true">▲</span>
+        <div class="callout-copy">
+          <p class="callout-title" data-i18n="callout.return">RETURN TO THE TRUCK</p>
+          <p class="callout-meta" id="return-distance">—</p>
+        </div>
+      </div>
+      <div id="truck-notice" class="callout truck-notice" hidden>
+        <span class="callout-arrow" id="truck-notice-arrow" aria-hidden="true">▲</span>
+        <div class="callout-copy">
+          <p class="callout-title" data-i18n="callout.truckReady">TRUCK UPGRADE READY</p>
+          <p class="callout-meta" id="truck-notice-distance">—</p>
+        </div>
+      </div>
+      <p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
+
+      <section id="site-complete" class="site-complete" hidden aria-live="polite">
+        <p class="site-complete-eyebrow" id="finish-eyebrow">SITE COMPLETE</p>
+        <p class="site-complete-stamp">FLAT OUT</p>
+        <p class="site-complete-copy" data-i18n="complete.copy">Every cell is at grade. Walk the site, or pause to take the next one when you are ready.</p>
+        <dl class="site-complete-stats">
+          <div>
+            <dt data-i18n="complete.score">Score</dt>
+            <dd id="finish-score">0</dd>
+          </div>
+          <div>
+            <dt data-i18n="complete.time">Time</dt>
+            <dd id="finish-time">0:00</dd>
+          </div>
+          <div>
+            <dt data-i18n="complete.shoveled">Shoveled</dt>
+            <dd id="finish-shoveled">0</dd>
+          </div>
+        </dl>
+        <div class="leaderboard">
+          <p class="leaderboard-title" data-i18n="complete.leaderboard">LOCAL LEADERBOARD</p>
+          <ol id="leaderboard-list" class="leaderboard-list"></ol>
+          <p class="leaderboard-note" data-i18n="complete.onlineLater">Online board after publishing.</p>
+        </div>
+        <div class="site-complete-actions">
+          <button id="next-site-btn" class="primary" type="button" data-i18n="complete.next">New run</button>
+          <button id="walk-site-btn" class="secondary" type="button" data-i18n="complete.walk">Keep walking</button>
+        </div>
+      </section>
+      <button
+        id="sprint-btn"
+        class="sprint-btn"
+        type="button"
+        aria-label="Hold to sprint"
+        data-i18n-aria="hud.sprintAria"
+        aria-pressed="false"
+      >
+        <span data-i18n="hud.sprint">SPRINT</span>
+      </button>
+      <button
+        id="throw-btn"
+        class="throw-btn"
+        type="button"
+        aria-label="Hold to throw into the truck"
+        data-i18n-aria="hud.throwAria"
+      >
+        <span data-i18n="hud.throw">THROW</span>
+      </button>
+
+      <button id="upgrades-btn" class="upgrades-btn" type="button" aria-label="Find the workbench">
+        <span id="upgrades-label" class="upgrades-btn-label" data-i18n="bench.find">WORKBENCH</span>
+        <span id="bench-distance" class="bench-distance"></span>
+        <kbd id="upgrades-key" class="upgrades-key" aria-hidden="true">U</kbd>
+        <span id="upgrades-badge" class="upgrades-badge" hidden>0</span>
+      </button>
+      <button id="look-prompt" class="look-prompt" type="button" hidden data-i18n="hud.clickLook">Click to look</button>
+    </section>
+
+    <section id="start" class="overlay">
+      <div class="panel start-panel">
+        <p class="world-tag" id="start-world">SAVE 1</p>
+        <p class="eyebrow" data-i18n="start.eyebrow">MUNICIPAL GROUNDS · THE GRAND BEACH</p>
+        <h1>FLAT <em>OUT</em></h1>
+        <p class="lede" data-i18n="start.lede">
+          One authored beach. One million blocks of sand above grade. Cut the
+          whole thing flat, hurl the sand into the truck, and keep the loads
+          coming. One map, one truck, one long shift.
+        </p>
+        <ul class="controls">
+          <li><kbd>W A S D</kbd><span data-i18n="start.walk">walk the site</span></li>
+          <li><kbd>Mouse</kbd><span data-i18n="start.look">look</span></li>
+          <li><kbd>Left click</kbd><span data-i18n="start.lift">lift a block</span></li>
+          <li><kbd>Right click</kbd><span data-i18n="start.throw">throw into the truck</span></li>
+          <li><kbd>Space</kbd><span data-i18n="start.hop">hop</span></li>
+          <li><kbd>Shift</kbd><span data-i18n="start.sprint">sprint · or the button</span></li>
+          <li><kbd>Esc</kbd><span data-i18n="start.pause">pause</span></li>
+          <li><kbd>E</kbd><span data-i18n="start.bench">workbench or truck bay</span></li>
+          <li><kbd>U</kbd><span data-i18n="start.findBench">find workbench</span></li>
+          <li><kbd>F</kbd><span data-i18n="start.inspect">inspect shovel</span></li>
+        </ul>
+        <div class="start-actions">
+          <button id="start-btn" class="primary" type="button" data-i18n="start.clockIn">Clock in</button>
+          <button id="restart-btn" class="secondary" type="button" hidden data-i18n="start.startOver">Start over · same map</button>
+          <button id="worlds-btn" class="secondary" type="button" data-i18n="worlds.open">Saves</button>
+        </div>
+        <p class="fine" data-i18n="start.fine">No timer. No failure. Just the grade.</p>
+      </div>
+    </section>
+
+    <section id="worlds" class="overlay worlds-overlay" hidden>
+      <div class="panel start-panel worlds-panel">
+        <p class="eyebrow" data-i18n="worlds.eyebrow">ONE WORLD · FOUR SAVE FILES</p>
+        <h1>FLAT <em>OUT</em></h1>
+        <p class="lede" data-i18n="worlds.lede">
+          One authored world, four save files. The beach, lifetime sand and
+          skills are shared; each file keeps its own run, score and time.
+          Continue, start a new run, or delete a file.
+        </p>
+        <p id="world-skills" class="world-skills"></p>
+        <div id="world-slots" class="world-slots"></div>
+        <div class="worlds-actions">
+          <button id="worlds-back" class="secondary" type="button" hidden data-i18n="worlds.back">Back</button>
+        </div>
+        <p class="fine" data-i18n="worlds.fine">
+          Autosaves into the active file. New run overwrites that file; delete
+          empties it. World skills are shared.
+        </p>
+      </div>
+    </section>
+
+    <section id="pause" class="overlay pause-overlay" hidden>
+      <div class="panel pause-panel">
+        <p class="eyebrow" id="pause-eyebrow" data-i18n="pause.eyebrow">CREW PAUSED</p>
+        <h2 id="pause-title" data-i18n="pause.title">Break time</h2>
+        <p class="pause-copy" id="pause-copy" data-i18n="pause.copy">The survey line will wait. Spend sand on the crew.</p>
+        <p class="pause-sand"><span data-i18n="wallet.label">SAND TO SPEND</span> <b id="pause-sand">0</b></p>
+        <div class="shop" id="shop-section">
+          <div class="shop-head">
+            <p class="shop-title" data-i18n="shop.title">UPGRADES</p>
+            <p class="shop-bank"><span id="shop-available">0</span> <span data-i18n="shop.available">available</span> · <span id="shop-shoveled">0</span> <span data-i18n="shop.shoveled">shoveled</span></p>
+          </div>
+          <div id="shop-rows" class="shop-rows"></div>
+        </div>
+        <p class="pause-hint" id="pause-hint" data-i18n="pause.shopHint" hidden>Upgrades are at the workbench at base camp.</p>
+        <div class="pause-actions">
+          <button id="resume-btn" class="primary" type="button" data-i18n="pause.resume">Back to work</button>
+          <button id="pause-next-btn" class="primary" type="button" hidden data-i18n="pause.nextSite">New run</button>
+          <button id="pause-worlds-btn" class="secondary" type="button" data-i18n="pause.worlds">Worlds</button>
+          <button id="mute-btn" class="icon-btn" type="button" aria-label="Mute sound" data-i18n-aria="pause.mute" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" /><path class="wave" d="M16 8.5a5 5 0 0 1 0 7" /><path class="wave" d="M18.5 6a8.5 8.5 0 0 1 0 12" /></svg>
+          </button>
+        </div>
+        <p class="fine" data-i18n="pause.fine">Click Back to work to pick the shovel up.</p>
+      </div>
+    </section>
+
+  </body>
+</html>
